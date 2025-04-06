@@ -3,6 +3,7 @@ import app.models.DeliveryRoute;
 import app.models.Driver;
 import app.models.Message;
 import app.models.TransportationOrder;
+import app.repositories.DriverRepository;
 import app.repositories.TransportationOrderRepository;
 import app.services.FraudDetectionService;
 import app.services.OrderLifecycleService;
@@ -11,13 +12,14 @@ import app.services.ShiftService;
 public class App {
     static void showcaseFirst() {
          // 1) Работа с водителями и расписанием:
+         DriverRepository driverRepository = new DriverRepository();
          Driver driver1 = new Driver(1L, "Иванов Иван Иванович", true);
-         driver1.save();
+         driverRepository.save(driver1);
  
          Driver driver2 = new Driver(2L, "Петров Пётр Петрович", true);
-         driver2.save();
+         driverRepository.save(driver2);
  
-         ShiftService shiftService = new ShiftService();
+         ShiftService shiftService = new ShiftService(driverRepository);
          shiftService.addShift(1L, 
                                java.time.LocalDateTime.of(2023, 10, 1, 8, 0),
                                java.time.LocalDateTime.of(2023, 10, 1, 16, 0));

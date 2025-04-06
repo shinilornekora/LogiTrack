@@ -61,7 +61,6 @@ public class TransportationOrder {
         this.lastActivityTime = LocalDateTime.now();
     }
 
-    // Геттеры
     public Long getOrderId() {
         return orderId;
     }

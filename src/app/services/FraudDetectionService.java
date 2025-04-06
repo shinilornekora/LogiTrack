@@ -7,7 +7,7 @@ public class FraudDetectionService {
     public boolean isSuspicious(TransportationOrder order) {
         // Упрощённая логика: если заказ создан больше N раз за короткий период,
         // или например автор сообщений меняется слишком часто, и т.п.
-        // Здесь просто заглушка:
+        // Здесь просто заглушка
         return false;
     }
 }
