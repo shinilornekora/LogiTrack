@@ -8,6 +8,10 @@ public class Shift {
     private final LocalDateTime endTime;
 
     public Shift(Long driverId, LocalDateTime startTime, LocalDateTime endTime) {
+        if (startTime.isAfter(endTime) || startTime.equals(endTime)) {
+            throw new IllegalArgumentException("Некорректный интервал смены: начало не может быть позже или равно окончанию.");
+        }
+
         this.driverId = driverId;
         this.startTime = startTime;
         this.endTime = endTime;

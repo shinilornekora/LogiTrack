@@ -21,7 +21,8 @@ public class TransportationOrderRepository {
                 return o;
             }
         }
-        return null;
+        
+        throw new IllegalStateException("Такого заказа нет!");
     }
 
     public List<TransportationOrder> findAll() {
