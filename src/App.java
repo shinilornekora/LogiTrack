@@ -21,18 +21,18 @@ public class App {
  
          ShiftService shiftService = new ShiftService(driverRepository);
          shiftService.addShift(1L, 
-                               java.time.LocalDateTime.of(2023, 10, 1, 8, 0),
-                               java.time.LocalDateTime.of(2023, 10, 1, 16, 0));
-         shiftService.addShift(1L, 
-                               java.time.LocalDateTime.of(2023, 10, 2, 8, 0),
-                               java.time.LocalDateTime.of(2023, 10, 2, 16, 0));
+                               java.time.LocalDateTime.of(2025, 10, 1, 8, 0),
+                               java.time.LocalDateTime.of(2025, 10, 1, 16, 0));
+         shiftService.addShift(2L, 
+                               java.time.LocalDateTime.of(2025, 10, 2, 8, 0),
+                               java.time.LocalDateTime.of(2025, 10, 2, 16, 0));
          // Проверим расписание:
          System.out.println("Смены водителя #1 на 2023-10-01:" + 
                             shiftService.getShiftsForDate(1L, java.time.LocalDate.of(2023, 10, 1)));
  
          boolean available = shiftService.isDriverAvailable(1L, 
-                                java.time.LocalDateTime.of(2023, 10, 1, 12, 0));
-         System.out.println("Водитель #1 доступен в 2023-10-01 12:00? " + available);
+                                java.time.LocalDateTime.of(2025, 10, 1, 12, 0));
+         System.out.println("Водитель #1 доступен в 2025-10-01 12:00? " + available);
     }
 
     static void showcaseSecond() {

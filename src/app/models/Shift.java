@@ -28,4 +28,10 @@ public class Shift {
     public LocalDateTime getEndTime() {
         return endTime;
     }
+
+    @Override
+    public String toString() {
+        return "\nСмена для водителя с ID " + driverId + " с " +
+            this.getStartTime() + " до " + this.getEndTime();
+    }
 }
