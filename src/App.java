@@ -11,6 +11,9 @@ import app.services.ShiftService;
 
 public class App {
     static void showcaseFirst() {
+        System.out.println("\n Первый этап!\n\n");
+
+
          // 1) Работа с водителями и расписанием:
          DriverRepository driverRepository = new DriverRepository();
          Driver driver1 = new Driver(1L, "Иванов Иван Иванович", true);
@@ -36,6 +39,8 @@ public class App {
     }
 
     static void showcaseSecond() {
+        System.out.println("\n Второй этап!\n\n");
+
         // 2) Работа со сложным агрегатом TransportationOrder:
         TransportationOrderRepository repository = new TransportationOrderRepository();
         OrderLifecycleService lifecycleService = new OrderLifecycleService();
@@ -60,9 +65,19 @@ public class App {
         // Подтверждаем сообщение "Перевозчиком"
         try {
             msg.confirm("Перевозчик");
+            Message msg1 = new Message(1L, "Да, начинаю", "Перевозчик");
+            order.addMessage(msg1);
+
+            // Ну и клиент тоже увидел
+            msg1.confirm("Клиент");
+
+            // Смотрим статус
+            System.out.println("Заявка #" + order.getOrderId() + " имеет статус " + order.getStatus());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        lifecycleService.completeOrder(order);
 
         // Имитация "простоя" и автозакрытия
         // (На реальном cron-фоновой задаче – проверять lastActivityTime для заявок)

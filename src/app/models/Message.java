@@ -11,7 +11,7 @@ public class Message {
     private final String text;
     private final List<Attachment> attachments = new ArrayList<>();
     private final LocalDateTime createdAt = LocalDateTime.now();
-    private final String author; // например, "Клиент" или "Перевозчик"
+    private final String author; // "Клиент" или "Перевозчик"
     private boolean confirmedByOppositeSide; // Инвариант: подтверждать может только другая сторона
 
     public Message(Long messageId, String text, String author) {
